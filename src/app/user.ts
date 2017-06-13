@@ -1,6 +1,6 @@
 export class User {
  id: number;
- documment: number;
+ document: number;
  first_name: string = '';
  last_name: string = '';
  username: string = '';
