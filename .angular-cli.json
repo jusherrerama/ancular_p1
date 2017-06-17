@@ -50,8 +50,13 @@
       "config": "./karma.conf.js"
     }
   },
+  "styles": [
+		"styles.css",
+        "styles.scss"
+      ],
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }
