@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-form.component.scss','./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
+  sign_up: Boolean = false;
+  login: Boolean = true;
 
-  constructor() { }
-
-  ngOnInit() {
+  option() {   
+    this.sign_up = !this.sign_up; 
+    this.login = !this.login;   
   }
 
+  constructor() { }
+    
+  ngOnInit() {
+  }
+  clicked(event) {
+    event.preventDefault();
+  }
 }
