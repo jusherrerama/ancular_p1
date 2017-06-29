@@ -6,32 +6,31 @@
   <div class="form">
       
       <ul class="tab-group"  >
-        <li   [ngClass]="{'tab active': sign_up}"  (click)="option()"><a>Sign Up</a></li>
-        <li [ngClass]="{'tab active': login}"  (click)="option()" ><a >Log In</a></li>
+        <li   [ngClass]="{'tab active': sign_up}"  (click)="option(1)"><a>Sign Up</a></li>
+        <li [ngClass]="{'tab active': login}"  (click)="option(0)" ><a >Log In</a></li>
       </ul>
       
       <div class="tab-content">
-        <div *ngIf="login;then content; else loading"></div>
-        <ng-template #content>
+        <div *ngIf="login;then log; else new"></div>
+        <ng-template #log>
     		
           <h1>Welcome Back!</h1>
           
-          <form action="/" method="post">
-          
+          <form ngNoForm action="/" method="post">          
             <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
+	            <label >
+	              Email Address<span class="req ">*</span>
+	            </label>
+	            <input type="email"required autocomplete="off"/>
+          	</div>
           
-          <div class="field-wrap">
-            <label>
-              Password<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-          
+	         <div class="field-wrap">
+	            <label>
+	              Password<span class="req">*</span>
+	            </label>
+	            <input type="password"required autocomplete="off"/>
+	         </div>
+	          
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
           <button class="button button-block">Log In</button>
@@ -39,24 +38,41 @@
           </form>
  
         </ng-template>
-		<ng-template #loading> 
+        
+        
+		<ng-template #new> 
           <h1>Sign Up for Free</h1>
           
           <form action="/" method="post">
-          
+	      <div class="top-row">    
+	          <div class="field-wrap">
+		            <label >
+		              Document<span class="req ">*</span>
+		            </label>
+		            <input type="number"required autocomplete="off" [(ngModel)]="newUser.document"  name="document"/>
+	      	</div>	
+	      	 <div class="field-wrap">
+		            <label >
+		              City<span class="req ">*</span>
+		            </label>
+		            <input type="text"required autocomplete="off" [(ngModel)]="newUser.city"  name="city"/>
+	      	</div>	
+			    	          
+	      </div>
+	      <br>	      
           <div class="top-row">
             <div class="field-wrap">
               <label>
                 First Name<span class="req">*</span>
               </label>
-              <input type="text" required autocomplete="off" />
+              <input type="text" required autocomplete="off" [(ngModel)]="newUser.first_name" name="first_name" />
             </div>
         
             <div class="field-wrap">
               <label>
                 Last Name<span class="req">*</span>
               </label>
-              <input type="text"required autocomplete="off"/>
+              <input type="text"required autocomplete="off"[(ngModel)]="newUser.last_name" name="last_name"/>
             </div>
           </div>
 
@@ -64,22 +80,61 @@
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="email"required autocomplete="off"[(ngModel)]="newUser.email" name="email"/>
+          </div>
+          
+          <div class="top-row">
+            <div class="field-wrap">
+          	    <label>
+           	      Password<span class="req">*</span>
+           	    </label>
+            	<input type="password"required autocomplete="off"[(ngModel)]="newUser.password" name="password"/>
+          	</div>        
+            <div class="field-wrap">
+	            <label>
+	              Confirm Password<span class="req">*</span>
+	            </label>
+            	<input type="password"required autocomplete="off"/>
+          	</div>
           </div>
           
           <div class="field-wrap">
             <label>
-              Set A Password<span class="req">*</span>
+              User Name<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password"required autocomplete="off"[(ngModel)]="newUser.password" name="password"/>
           </div>
           
-          <button type="submit" class="button button-block">Get Started</button>
+          <div class="top-row">
+            <div class="field-wrap">
+          	    <label>
+           	      Gender<span class="req">*</span>
+           	    </label>
+            </div>        
+            <div class="top-row" >
+	      		<div class="field-wrap  ">
+		            <label class="roundedOne label" >
+		              Male<span class="req ">*</span>
+		            </label>
+		            <input class="roundedOne	input" type="checkbox" value="None" id="roundedTwo" name="check2" checked />
+			    </div>	
+			    <div class="field-wrap ">
+		            <label class="roundedOne label" >
+		              Female<span class="req ">*</span>
+		            </label>
+		            <input class="roundedOne	input" type="checkbox" value="None" id="roundedTwo" name="check2" checked />
+			    </div>	
+			    
+		    </div>	
+          </div>
+          
+          
+           <button type="submit" class="button button-block" (click)="addUser()" >Get Started</button>
+         
           
           </form>
-		</ng-template>
         
-        
+        </ng-template>
         
       </div><!-- tab-content -->
       

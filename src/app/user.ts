@@ -7,6 +7,7 @@ export class User {
  city: string = '';
  gender: string = '';
  email: string = '';
+ phone: number ;
  image?: HTMLImageElement;
 
   constructor(values: Object = {}) {

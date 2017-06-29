@@ -11,6 +11,7 @@ export class UserDataService {
       user.id = ++this.lastId;
     }
     this.users.push(user);
+    console.log(this.users); 
     return this;
   }
 
